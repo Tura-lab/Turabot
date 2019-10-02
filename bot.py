@@ -61,7 +61,7 @@ dispatcher.add_handler(start_handler)
 @server.route("/")
 def webhook():
     bot.remove_webhook()
-    bot.set_webhook(url='https://stormy-plains-57625.com/' + TOKEN)
+    bot.set_webhook(url='https://cryptic-beach-96876.com/' + TOKEN)
     return "!", 200
 
 
