@@ -6,8 +6,6 @@ import random
 import requests
 from functools import partial
 import time
-from flask import Flask
-
 
 from telegram.error import (TelegramError, Unauthorized, BadRequest, TimedOut, ChatMigrated, NetworkError)
 
@@ -16,7 +14,6 @@ from telegram.ext import MessageHandler, Filters
 
 updater = Updater(token= '957266795:AAHewWLVfyyAYhHMAOPP9zukcT9AENWwrqc', use_context=True , request_kwargs={'read_timeout': 6000, 'connect_timeout': 7000})
 
-server = Flask(__name__)
 
 dispatcher = updater.dispatcher
 
@@ -50,23 +47,18 @@ def send(update, context):
     	context.bot.send_hoto(chat_id, pic)
  
 
-send_handler = MessageHandler(Filters.text, send)
-dispatcher.add_handler(send_handler)
+def main():
+	send_handler = MessageHandler(Filters.text, send)
+	dispatcher.add_handler(send_handler)
 
 
-start_handler = CommandHandler('start', start)
-dispatcher.add_handler(start_handler)
+	start_handler = CommandHandler('start', start)
+	dispatcher.add_handler(start_handler)
 
-
-@server.route("/")
-def webhook():
-    bot.remove_webhook()
-    bot.set_webhook(url='https://cryptic-beach-96876.com/' + TOKEN)
-    return "!", 200
 
 
 if __name__ == "__main__":
-    server.run(host="0.0.0.0", port=int(os.environ.get('PORT', 5000)))
+    main()
 
 	
 
