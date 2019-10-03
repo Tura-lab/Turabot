@@ -11,13 +11,7 @@ from telegram.ext import MessageHandler, Filters
 
 TOKEN = '957266795:AAHewWLVfyyAYhHMAOPP9zukcT9AENWwrqc'
 
-REQUEST_KWARGS={
-    'proxy_url': 'http://196.189.114.117:80/'}
 
-updater = Updater(token= TOKEN, use_context=True)
-
-
-dispatcher = updater.dispatcher
 
 logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s' ,level=logging.INFO)
 
@@ -50,6 +44,11 @@ def send(update, context):
  
 
 def main():
+	
+	updater = Updater(token= TOKEN, use_context=True)
+
+
+	dispatcher = updater.dispatcher
 	send_handler = MessageHandler(Filters.text, send)
 	dispatcher.add_handler(send_handler)
 
