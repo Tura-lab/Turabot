@@ -23,7 +23,7 @@ def start(update, context):
 
 
 def send(update, context):
-    context.bot.send_message(chat_id=update.message.chat_id, text=update.message.text)
+    context.bot.send_message(chat_id=update.message.chat_id, text= "searching for " + str(update.message.text))
     
     USER_AGENT = 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.181 Safari/537.36'
     headers = { 'User-Agent': USER_AGENT }
@@ -37,9 +37,9 @@ def send(update, context):
     
     urllist = [n for n in re.findall('"ou":"([a-zA-Z0-9_./:-]+.(?:jpg|jpeg|png))",', r.text)]
     if len(urllist)==0:
-    	context.bot.send_message(chat_id=update.message.chat_id, text= "Sorry...I could not find any picturs..\n Please try again..")
+    	context.bot.send_message(chat_id=update.message.chat_id, text= "Sorry...I could not find any picturs..\nPlease try again..")
     else:
-    	num=random.randint(1,len(urllist))
+    	num=random.randint(0,len(urllist))
     	chat_id=update.message.chat_id
     	pic=urllist[num]
     	context.bot.send_hoto(chat_id, pic)
