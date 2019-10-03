@@ -46,16 +46,18 @@ def send(update, context):
     	num=random.randint(0,len(urllist))
     	chat_id=update.message.chat_id
     	pic=urllist[num]
-    	context.bot.send_hoto(chat_id, pic)
+    	context.bot.send_photo(chat_id, pic)
  
 
+def main():
+	send_handler = MessageHandler(Filters.text, send)
+	dispatcher.add_handler(send_handler)
 
-send_handler = MessageHandler(Filters.text, send)
-dispatcher.add_handler(send_handler)
 
-
-start_handler = CommandHandler('start', start)
-dispatcher.add_handler(start_handler)
-updater.start_polling(none_stop=True)
+	start_handler = CommandHandler('start', start)
+	dispatcher.add_handler(start_handler)
+	updater.start_polling(none_stop=True)
 
 	
+if __name=="__main__":
+	main()
