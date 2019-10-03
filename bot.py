@@ -26,7 +26,7 @@ def send(update, context):
     USER_AGENT = 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.181 Safari/537.36'
     headers = { 'User-Agent': USER_AGENT }
     
-    query = str(update.message.text)
+    query = update.message.text
     query_key = query.replace(' ','+')
     
     tgt_url = 'https://www.google.com.sg/search?q={}&tbm=isch&tbs=sbd:0'.format(query_key)
@@ -45,7 +45,7 @@ def send(update, context):
 
 def main():
 	
-	updater = Updater(token= TOKEN, use_context=True)
+	updater = Updater(token = '957266795:AAHewWLVfyyAYhHMAOPP9zukcT9AENWwrqc', use_context=True)
 
 
 	dispatcher = updater.dispatcher
