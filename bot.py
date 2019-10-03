@@ -55,8 +55,8 @@ def main():
 
 	start_handler = CommandHandler('start', start)
 	dispatcher.add_handler(start_handler)
-	updater.start_polling(none_stop=True)
+	updater.start_polling()
 
 	
-if __name=="__main__":
+if __name__=="__main__":
 	main()
