@@ -11,7 +11,10 @@ from telegram.ext import MessageHandler, Filters
 
 TOKEN = '957266795:AAHewWLVfyyAYhHMAOPP9zukcT9AENWwrqc'
 
-updater = Updater(token= TOKEN, use_context=True)
+REQUEST_KWARGS={
+    'proxy_url': 'http://196.189.114.117:80/'}
+
+updater = Updater(token= TOKEN, use_context=True,request_kwargs=REQUEST_KWARGS)
 
 
 dispatcher = updater.dispatcher
