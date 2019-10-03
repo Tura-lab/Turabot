@@ -14,7 +14,7 @@ TOKEN = '957266795:AAHewWLVfyyAYhHMAOPP9zukcT9AENWwrqc'
 REQUEST_KWARGS={
     'proxy_url': 'http://196.189.114.117:80/'}
 
-updater = Updater(token= TOKEN, use_context=True,request_kwargs=REQUEST_KWARGS)
+updater = Updater(token= TOKEN, use_context=True)
 
 
 dispatcher = updater.dispatcher
@@ -49,21 +49,13 @@ def send(update, context):
     	context.bot.send_hoto(chat_id, pic)
  
 
-def main():
-	send_handler = MessageHandler(Filters.text, send)
-	dispatcher.add_handler(send_handler)
+
+send_handler = MessageHandler(Filters.text, send)
+dispatcher.add_handler(send_handler)
 
 
-	start_handler = CommandHandler('start', start)
-	dispatcher.add_handler(start_handler)
-	updater.start_polling()
-	updater.idle()
-
-
-
-if __name__ == "__main__":
-    main()
-
-	
+start_handler = CommandHandler('start', start)
+dispatcher.add_handler(start_handler)
+updater.start_polling(none_stop=True)
 
 	
