@@ -6,13 +6,11 @@ import random
 import requests
 from functools import partial
 import time
-
 from telegram.error import (TelegramError, Unauthorized, BadRequest, TimedOut, ChatMigrated, NetworkError)
-
 from telegram.ext import MessageHandler, Filters
 
 
-updater = Updater(token= '957266795:AAHewWLVfyyAYhHMAOPP9zukcT9AENWwrqc', use_context=True , request_kwargs={'read_timeout': 6000, 'connect_timeout': 7000})
+updater = Updater(token= '957266795:AAHewWLVfyyAYhHMAOPP9zukcT9AENWwrqc', use_context=True )
 
 
 dispatcher = updater.dispatcher
